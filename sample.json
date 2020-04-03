@@ -1,0 +1,7 @@
+{
+	"name": "Steel", 
+	"min_density": 3,
+	"max_density": 10,
+	"min_strength": 234,
+	"max_strength": 456
+}
