@@ -1,5 +1,6 @@
 const express = require('express');
 const port = process.env.PORT || 8080;
+const mongoose = require('mongoose');
 const app = express();
 const body_parser = require('body-parser')
 
@@ -27,6 +28,21 @@ app.get("/api/materials", material_controller.api_get_materials);
 
 
 // DELETE
+app.delete("/api/material/:id", material_controller.api_delete_material);
 
 
-app.listen(port);
+
+//Bwhx7kQeLlmGIGYq
+const database_uri = "mongodb+srv://server:Bwhx7kQeLlmGIGYq@cluster0-wicfr.mongodb.net/materialdb?retryWrites=true&w=majority";
+
+mongoose.connect(database_uri, {
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: false
+}).then(()=>{
+    console.log('database connected')
+    app.listen(port);
+}).catch(err=>{
+    console.log(err);
+});
