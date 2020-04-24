@@ -66,20 +66,13 @@ const api_put_material = (req,res,next) =>{
 // DELETE
 const api_delete_material = (req,res,next)=>{
     let id = req.params.id;
-    material_model.findOneAndRemove(id).then(()=>{
+    material_model.findByIdAndRemove(id).then(()=>{
         res.send();
     }).catch(err =>{
         res.status(500);
         res.send(err.errmsg);
         console.log(err);
     });
-/*     material_model.findByIdAndRemove(id).then(()=>{
-        res.send();
-    }).catch(err =>{
-        res.status(500);
-        res.send(err.errmsg);
-        console.log(err);
-    }); */
 };
 
 
